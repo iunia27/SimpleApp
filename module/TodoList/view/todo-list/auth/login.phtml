@@ -1,0 +1,28 @@
+<?php
+
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<table>
+    <tr>
+        <td><?php echo $this->formlabel($form->get('username'));?></td>
+        <td><?php echo $this->formElement($form->get('username')); ?>
+            <span class="common-error-msg"><?php echo $this->formElementErrors($form->get('username'));?></span></td>
+    </tr>
+    <tr>
+        <td><?php echo $this->formlabel($form->get('password'));?></td>
+        <td><?php echo $this->formElement($form->get('password')); ?>
+            <span class="common-error-msg"><?php echo $this->formElementErrors($form->get('password'));?></span></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <?php
+            echo $this->formElement($form->get('submit'));
+            ?>
+        </td>
+    </tr>
+</table>
+<?php
+echo $this->form()->closeTag($form);
+?>

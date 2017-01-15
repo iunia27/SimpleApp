@@ -1,0 +1,44 @@
+<?php
+//show all tasks
+
+$title = 'My todo list';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('task', ['action' => 'add', 'id' => null, 'userid' => $userid]) ?>">Add new task</a>
+</p>
+
+<h3>Pending Tasks</h3>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($pendingTasks as $pendingTask) : ?>
+        <tr>
+            <td><?= $this->escapeHtml($pendingTask->title) ?></td>
+            <td>
+                <a href="<?= $this->url('task', ['action' => 'edit', 'id' => $pendingTask->id]) ?>">Edit</a>
+                <a href="<?= $this->url('task', ['action' => 'delete', 'id' => $pendingTask->id]) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<h3>Finished Tasks</h3>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($finishedTasks as $finishedTask) : ?>
+        <tr>
+            <td><?= $this->escapeHtml($finishedTask->title) ?></td>
+            <td>
+                <a href="<?= $this->url('task', ['action' => 'edit', 'id' => $finishedTask->id]) ?>">Edit</a>
+                <a href="<?= $this->url('task', ['action' => 'delete', 'id' => $finishedTask->id]) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
